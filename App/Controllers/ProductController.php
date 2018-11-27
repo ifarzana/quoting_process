@@ -160,9 +160,6 @@ class ProductController
             session_start();
             $_SESSION['step3'] = $data;
 
-
-
-
             $input = $_SESSION;
             $step1_data = $input['step1'];
             $step2_data = $input['step2']['products'];
