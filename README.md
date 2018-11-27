@@ -13,7 +13,7 @@ Multi step quoting process.
 1. localhost/step3
 1. localhost/quote/{quote_id}
 
-## Starting an application
+## Starting the application
 
 1. Run **composer update** to install the project dependencies.
 1. Configure your web server to have the **public** folder as the web root.

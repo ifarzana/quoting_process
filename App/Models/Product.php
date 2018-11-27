@@ -14,9 +14,20 @@ class Product{
 
         $this->db = new Database();
 		$this->conn = $this->db->getConnection();
+
+        /**
+         * The database table used by the model.
+         *
+         * @var string
+         */
 		$this->table = "product";
 	}
-	public function getAll(){
+
+    /**
+     * Get all of the models from the database.
+     *
+     */
+    public function getAll(){
 		return $this->conn->query("SELECT * from $this->table");
 	}
     public function getAllProductByProductTypeID($product_type_id){

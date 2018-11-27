@@ -11,11 +11,11 @@ class QuoteController
 {
 
     /**
-     * Show the index page
+     * Show the quote index page
      *
      * @return void
      */
-    public function index($quote_id)
+    public function view($quote_id)
     {
         /*Get user info*/
         $quoteObj = new Quote();

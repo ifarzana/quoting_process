@@ -157,7 +157,7 @@ class ProductController
 
                 //Calculate each product price
                 $manager = new ProductManager();
-                $result = $manager->calculatePrice($product['product_type_id'], $product['product_id'], $price_type,
+                $result = $manager->calculatePrice($product['product_id'], $price_type,
                     $product['start_date'], $product['end_date'],
                     $product['quantity'],
                     $hours);

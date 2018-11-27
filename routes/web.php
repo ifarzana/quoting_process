@@ -11,6 +11,6 @@ Route::group(['namespace' => '\App\Controllers', 'exceptionHandler' => \App\Hand
     Route::get('/get-product-type', 'ProductController@getProductType');
     Route::get('/get-product-by-type/{product_type_id?}', 'ProductController@getProductByType');
 
-    Route::get('/quote/{quote_id}', 'QuoteController@index');
+    Route::get('/quote/{quote_id}', 'QuoteController@view');
 
 });

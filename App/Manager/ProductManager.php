@@ -6,7 +6,20 @@ use App\Models\Product;
 
 class ProductManager
 {
-    public function calculatePrice($product_type_id, $product_id, $price_type,
+
+    /**
+     * Calculate the total price of a product based on its price type i.e., per_quantity, per_day, per_hour.
+     *
+     * @param $product_id integer
+     * @param $price_type string
+     * @param $start_date string
+     * @param $end_date string
+     * @param $quantity integer
+     * @param $hours integer
+     *
+     * @return array
+     */
+    public function calculatePrice($product_id, $price_type,
                                    $start_date, $end_date,
                                    $quantity,
                                    $hours)
@@ -41,7 +54,6 @@ class ProductManager
 
 
         }
-
 
         return $result;
     }

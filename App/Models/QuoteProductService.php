@@ -14,9 +14,20 @@ class QuoteProductService{
 
         $this->db = new Database();
 		$this->conn = $this->db->getConnection();
+
+        /**
+         * The database table used by the model.
+         *
+         * @var string
+         */
 		$this->table = "quote_product_service";
 	}
-	public function getAll(){
+
+    /**
+     * Get all of the models from the database.
+     *
+     */
+    public function getAll(){
 		return $this->conn->query("SELECT * from $this->table");
 	}
 
