@@ -21,7 +21,7 @@ class ProductController
         $productTypeObj = new ProductType();
         $types = $productTypeObj->getAll();
 
-        $array = array();
+        $array = [];
         while($row = $types->fetch_assoc()) {
             $array[] = $row;
         }
@@ -38,7 +38,7 @@ class ProductController
         $productObj = new Product();
         $products = $productObj->getAllProductByProductTypeID($product_type_id);
 
-        $array = array();
+        $array = [];
         while($row = $products->fetch_assoc()) {
             $array[] = $row;
         }
@@ -52,24 +52,39 @@ class ProductController
 
         if(isset($_POST) && !empty($_POST)) {
 
-            $data= array();
+            $required = [
+                'name', 'password', 'email', 'phone'
+            ];
+
+            $validate = [];
+            $data = [];
             foreach($_POST as $key => $value){
                 if(empty($value)){
                     $data[$key] = null;
+
+                    /*Validate*/
+                    if(in_array($key, $required)) {
+                        $validate['error'][] = $key. ' is a required field';
+                    }
                 }
                 else{
                     $data[$key] = $value;
                 }
 
             }
+
+            if(count($validate['error']) > 0 ){
+                return View::render('Product/Steps/step1.php', ['errors' => $validate['error']]);
+            }
+
             session_start();
             $_SESSION['step1'] = $data;
 
-            View::render('Product/Steps/step2.php');
+            return View::render('Product/Steps/step2.php');
         }
         else{
 
-            View::render('Product/Steps/step1.php');
+            return View::render('Product/Steps/step1.php');
 
         }
 
@@ -80,16 +95,40 @@ class ProductController
 
         if(isset($_POST) && !empty($_POST)) {
 
-            $data= array();
+            $required = [
+                'product_type_id', 'product_id'
+            ];
+
+            if ($_POST['product_type_id'] == 1){
+                array_push($required,'start_date', 'end_date');
+
+            } elseif ($_POST['product_type_id'] == 3){
+                array_push($required,'quantity');
+
+            }
+
+            $validate = [];
+            $data= [];
             foreach($_POST as $key => $value){
                 if(empty($value)){
                     $data[$key] = null;
+
+                    /*Validate*/
+                    if(in_array($key, $required)) {
+                        $validate['error'][] = $key. ' is a required field';
+                    }
+
                 }
                 else{
                     $data[$key] = $value;
                 }
 
             }
+
+            if(count($validate['error']) > 0 ){
+                return View::render('Product/Steps/step2.php', ['errors' => $validate['error']]);
+            }
+
             session_start();
             $_SESSION['step2']['products'][] = $data;
 
@@ -108,7 +147,7 @@ class ProductController
 
         if(isset($_POST) && !empty($_POST)) {
 
-            $data= array();
+            $data= [];
             foreach($_POST as $key => $value){
                 if(empty($value)){
                     $data[$key] = null;

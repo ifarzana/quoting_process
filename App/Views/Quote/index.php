@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +8,6 @@ ini_set('display_errors', 1);
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 
 </head>
-
 <body>
 
 <div class="container">
@@ -31,8 +25,6 @@ ini_set('display_errors', 1);
 
             <?php foreach ($quote_product as $product){
 
-
-
                 ?>
                 <tr>
                     <td><?php echo $product['name']; ?></td>
@@ -44,13 +36,8 @@ ini_set('display_errors', 1);
 
             <?php } ?>
 
-
-
-
     </table>
     <h3>Total price : <?=$total_price?></h3>
-
-
 </div>
 
 </body>

@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,22 +21,35 @@ ini_set('display_errors', 1);
 
     <form id="register_form" action="/step1" method="post">
 
+        <?php if (isset($errors) && count($errors) > 0) { ?>
+        <div class="alert alert-danger alert-list" role="alert">
+            <p>There were one or more issues with your submission. Please correct them as indicated below.</p>
+
+            <ul>
+                <?php foreach ($errors as $error) { ?>
+                <li> <?php echo $error; ?> </li>
+                <?php } ?>
+            </ul>
+
+        </div>
+        <?php } ?>
+
         <h1>Step 1 - Add User Info</h1>
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name*</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="Name">
         </div>
         <div class="form-group">
             <label for="password">Password*</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="password" required placeholder="Password">
         </div>
         <div class="form-group">
             <label for="email">Email address*</label>
-            <input type="email" class="form-control" required id="email" name="email" placeholder="Email">
+            <input type="email" class="form-control" id="email" name="email" required placeholder="Email">
         </div>
         <div class="form-group">
             <label for="phone">Phone number*</label>
-            <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number">
+            <input type="text" class="form-control" name="phone" id="phone" required placeholder="Phone Number">
         </div>
 
 

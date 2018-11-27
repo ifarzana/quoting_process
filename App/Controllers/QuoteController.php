@@ -28,7 +28,7 @@ class QuoteController
         $quoteProductObj = new QuoteProduct();
         $products = $quoteProductObj->getAllProductsOfQuote($quote_id);
 
-        $array = array();
+        $array = [];
         while($row = $products->fetch_assoc()) {
             $array[] = $row;
         }

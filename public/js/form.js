@@ -92,27 +92,6 @@ $(document).ready(function(){
         product_type_id_input.find(":selected").val()
     );
 
-    // Handle form submit and validation
-    // $( "#register_form" ).submit(function(event) {
-    //     var error_message = '';
-    //     if(!$("#email").val()) {
-    //         error_message+="Please Fill Email Address";
-    //     }
-    //     if(!$("#password").val()) {
-    //         error_message+="<br>Please Fill Password";
-    //     }
-    //     if(!$("#mobile").val()) {
-    //         error_message+="<br>Please Fill Mobile Number";
-    //     }
-    //     // Display error if any else submit form
-    //     if(error_message) {
-    //         $('.alert-success').removeClass('hide').html(error_message);
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // });
-
     $('.datepicker').datepicker({
         format: 'mm/dd/yyyy',
     });

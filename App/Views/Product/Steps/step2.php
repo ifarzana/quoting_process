@@ -1,8 +1,3 @@
-<?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +20,19 @@ ini_set('display_errors', 1);
 <div class="container">
 
     <form id="register_form" action="/step2" method="post">
+
+        <?php if (isset($errors) && count($errors) > 0) { ?>
+            <div class="alert alert-danger alert-list" role="alert">
+                <p>There were one or more issues with your submission. Please correct them as indicated below.</p>
+
+                <ul>
+                    <?php foreach ($errors as $error) { ?>
+                        <li> <?php echo $error; ?> </li>
+                    <?php } ?>
+                </ul>
+
+            </div>
+        <?php } ?>
 
         <h1>Step 2 - Add product</h1>
         <div class="form-group">
