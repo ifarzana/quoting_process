@@ -132,11 +132,11 @@ class ProductController
             session_start();
             $_SESSION['step2']['products'][] = $data;
 
-            View::render('Product/Steps/step3.php');
+            return View::render('Product/Steps/step3.php');
 
 
         }else {
-            View::render('Product/Steps/step2.php');
+            return View::render('Product/Steps/step2.php');
 
         }
 
@@ -237,7 +237,7 @@ class ProductController
             session_destroy();
 
         }else {
-            View::render('Product/Steps/step2.php');
+            return View::render('Product/Steps/step2.php');
 
         }
 
